@@ -1,5 +1,5 @@
 import copy
-from tkinter import N
+ 
 POSSIBLE_ACTIONS = [[1,1],[0,2],[2,0],[0,1],[1,0]]
 
 class State():
@@ -10,9 +10,7 @@ class State():
 		self.deksia=deksia;
 		self.prev = None
 		
-	def _str__(self):
-		return("({},{}) - ({},{}) - {}".format(self.aristera[0],self.aristera[1],self.deksia[0],self.deksia[1],self.barka))
-	
+	 
 	def isValidState(self):	
 		# ama oi kanibaloi einai perisoteroi apo tous ierapostolous on the aristera or deksia side
 		if(0 < self.aristera[0] < self.aristera[1] or 0 < self.deksia[0] < self.deksia[1]):
@@ -31,7 +29,7 @@ class State():
 		return hash((self.aristera[0],self.aristera[1],self.barka,self.deksia[0],self.deksia[1]))
 	
 	def _str_(self):
-		return("({},{}) - ({},{}) - {}".format(self.aristera[0],self.aristera[1],self.deksia[0],self.deksia[1],self.barka))
+		return("({},{})  ({},{})  {}".format(self.aristera[0],self.aristera[1],self.deksia[0],self.deksia[1],self.barka))
 	
 	def isGoalState(self):
 		# to state pou theloume na ftasoume dhladi aloi oi kanibaloi kai oi ierapostoloi na pane stin apenanti oxthi
@@ -98,7 +96,11 @@ def bfs(root):
 				queue.append(child)
 
 def main():
-	initial_state = State([3,3],0,[0,0])
+	
+	kan=3
+	ier=3
+
+	initial_state = State([ier,kan],0,[0,0])
 	state = bfs(initial_state)
 	
 	#path
@@ -113,11 +115,15 @@ def main():
 	
 	#anaparastasi tou algorithmou
 	for state in path:
+		print(40*"-","\n",40*"-")
 		if state.barka:
-			print("""{:3} ||         b|| {:3}\n{:3} ||          || {:3}""".format("K"*state.aristera[1], "K"*state.deksia[1], "I"*state.aristera[0], "I"*state.deksia[0]))
+			
+			print("""{:10}🌲🌊🌊🌊🌊⛵🌲{:15}
+				   \n{:10}🌲🌊🌊🌊🌊🌊🌲{:15}""".format("👹"*state.aristera[1], "👹"*state.deksia[1], "😇"*state.aristera[0], "😇"*state.deksia[0]))
 		else:
-			print("""{:3} ||b         || {:3}\n{:3} ||          || {:3}""".format("K"*state.aristera[1], "K"*state.deksia[1], "I"*state.aristera[0], "I"*state.deksia[0]))
-		print("\n")
-
+			print("""{:10}🌲⛵🌊🌊🌊🌊🌲{:15}
+				   \n{:10}🌲🌊🌊🌊🌊🌊🌲{:15}""".format("👹"*state.aristera[1], "👹"*state.deksia[1], "😇"*state.aristera[0], "😇"*state.deksia[0]))
+	 
+  
 if __name__ == "__main__":
 	main()
