@@ -12,7 +12,7 @@ class State():
 		
 	 
 	def isValidState(self):	
-		# ama oi kanibaloi einai perisoteroi apo tous ierapostolous on the aristera or deksia side
+		# ama oi kanibaloi einai perisoteroi apo tous ierapostolous apo aristera h deksia oxth
 		if(0 < self.aristera[0] < self.aristera[1] or 0 < self.deksia[0] < self.deksia[1]):
 			return False	
 		#se periptosi pou metaferthoun parpanw apo to sunolo ton atomon pou uparxoun
